@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr/layout/button.dart';
+import 'package:tourist/layout/button.dart';
 import 'package:barcode_scan_fix/barcode_scan.dart';
 
 class Home extends StatefulWidget {
