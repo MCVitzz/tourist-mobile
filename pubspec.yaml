@@ -31,6 +31,8 @@ dependencies:
 
   #Added Dependencies
   barcode_scan_fix: ^1.0.2
+  carousel_slider: ^4.0.0-nullsafety.0
+  smooth_page_indicator: ^0.2.3
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +48,24 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/images/carnaxide/carnaxide1.jpg
+    - assets/images/carnaxide/carnaxide2.jpg
+    - assets/images/carnaxide/carnaxide3.jpg
+
+    - assets/images/sjorge/sjorge1.jpg
+    - assets/images/sjorge/sjorge2.jpg
+    - assets/images/sjorge/sjorge3.jpg
+
+    - assets/images/terreiro/terreiro1.jpg
+    - assets/images/terreiro/terreiro2.jpg
+    - assets/images/terreiro/terreiro3.jpg
+    
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

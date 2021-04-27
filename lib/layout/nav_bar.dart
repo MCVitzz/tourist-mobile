@@ -12,9 +12,11 @@ class NavBar extends StatefulWidget {
   final String path3;
   final IconData icon4;
   final String path4;
+  final IconData fabIcon;
+  final Function fabAction;
 
   NavBar(this.icon1, this.path1, this.icon2, this.path2, this.icon3, this.path3,
-      this.icon4, this.path4);
+      this.icon4, this.path4, this.fabIcon, this.fabAction);
 
   @override
   _NavBarState createState() => _NavBarState();

@@ -1,36 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:tourist/layout/button.dart';
 import 'package:barcode_scan_fix/barcode_scan.dart';
+import 'package:flutter/material.dart';
+import 'package:tourist/data/poi.dart';
+import 'package:tourist/layout/nav_bar.dart';
+import 'package:tourist/pages/poi_view.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  String message = 'Júlio Miguel';
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Historical Routes'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Padding(
+          padding: EdgeInsets.only(top: 16),
+          child: Text(
+            'Tourist',
+            style: TextStyle(
+                color: Colors.white, fontFamily: 'Montserrat', fontSize: 32),
+          ),
+        ),
       ),
-      body: Center(
-        child: Column(children: [
-          Button(
-              onPressed: () async {
-                String codeSanner = await BarcodeScanner.scan();
-                setState(() {
-                  message = codeSanner;
-                });
-              },
-              text: 'Test'),
-          Text(
-            message,
-            style: TextStyle(color: Colors.black),
-          )
-        ]),
-      ),
+      body: POIView(POI.terreiro),
+      bottomNavigationBar: NavBar(
+          Icons.map,
+          '/poiView',
+          Icons.search,
+          '/search',
+          Icons.room_outlined,
+          '/route',
+          Icons.person,
+          '/profile',
+          Icons.qr_code_sharp,
+          fabPressed),
     );
+  }
+
+  void fabPressed() async {
+    String scanned = await BarcodeScanner.scan();
   }
 }

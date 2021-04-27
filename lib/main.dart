@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourist/data/poi.dart';
 import 'package:tourist/pages/home.dart';
+import 'package:tourist/pages/poi_view.dart';
+import 'package:tourist/theme.dart';
 
 void main() {
   runApp(Tourist());
@@ -11,9 +14,10 @@ class Tourist extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Historical Routes',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: TouristTheme.backgroundColor),
+      routes: {
+        '/poiView': (context) => POIView(POI.carnaxide),
+      },
       home: Home(),
     );
   }
