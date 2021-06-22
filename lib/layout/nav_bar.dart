@@ -1,22 +1,20 @@
 import 'package:barcode_scan_fix/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:tourist/layout/fab_icon.dart';
+import 'package:tourist/services/providers/provider.dart';
 import 'package:tourist/theme.dart';
 
 class NavBar extends StatefulWidget {
   final IconData icon1;
-  final String path1;
   final IconData icon2;
-  final String path2;
   final IconData icon3;
-  final String path3;
   final IconData icon4;
-  final String path4;
   final IconData fabIcon;
   final Function fabAction;
+  final Function navBarAction;
 
-  NavBar(this.icon1, this.path1, this.icon2, this.path2, this.icon3, this.path3,
-      this.icon4, this.path4, this.fabIcon, this.fabAction);
+  NavBar(this.icon1, this.icon2, this.icon3, this.icon4, this.fabIcon,
+      this.fabAction, this.navBarAction);
 
   @override
   _NavBarState createState() => _NavBarState();
@@ -44,9 +42,9 @@ class _NavBarState extends State<NavBar> {
             Center(
               heightFactor: 0.6,
               child: FABIcon(
-                icon: Icons.qr_code_sharp,
+                icon: widget.fabIcon,
                 onPressed: () async {
-                  String scanned = await BarcodeScanner.scan();
+                  widget.fabAction.call();
                 },
               ),
             ),
@@ -62,7 +60,7 @@ class _NavBarState extends State<NavBar> {
                           : TouristTheme.navBarItemColor,
                       icon: Icon(this.widget.icon1),
                       onPressed: () {
-                        _pressed(this.widget.path1, 0);
+                        _pressed(0);
                       }),
                   IconButton(
                       splashRadius: 0.1,
@@ -71,7 +69,7 @@ class _NavBarState extends State<NavBar> {
                           : TouristTheme.navBarItemColor,
                       icon: Icon(Icons.search),
                       onPressed: () {
-                        _pressed(this.widget.path2, 1);
+                        _pressed(1);
                       }),
                   Container(
                     width: MediaQuery.of(context).size.width * .2,
@@ -83,7 +81,7 @@ class _NavBarState extends State<NavBar> {
                           : TouristTheme.navBarItemColor,
                       icon: Icon(Icons.room_outlined),
                       onPressed: () {
-                        _pressed(this.widget.path3, 2);
+                        _pressed(2);
                       }),
                   IconButton(
                       splashRadius: 0.1,
@@ -92,7 +90,7 @@ class _NavBarState extends State<NavBar> {
                           : TouristTheme.navBarItemColor,
                       icon: Icon(Icons.person),
                       onPressed: () {
-                        _pressed(this.widget.path4, 3);
+                        _pressed(3);
                       }),
                 ],
               ),
@@ -101,9 +99,10 @@ class _NavBarState extends State<NavBar> {
         ));
   }
 
-  void _pressed(path, idx) {
+  void _pressed(idx) {
     setState(() {
       this.currentIndex = idx;
+      this.widget.navBarAction(idx);
     });
   }
 }

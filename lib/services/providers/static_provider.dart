@@ -1,4 +1,5 @@
-import 'package:tourist/services/data_provider.dart';
+import 'package:tourist/data/point_of_interest.dart';
+import 'package:tourist/services/providers/data_provider.dart';
 
 class StaticProvider extends DataProvider {
   String getString(url) {
@@ -9,5 +10,9 @@ class StaticProvider extends DataProvider {
     } else {
       return 'amber';
     }
+  }
+
+  Future<PointOfInterest> getPOI(poi) async {
+    return PointOfInterest.carnaxide;
   }
 }

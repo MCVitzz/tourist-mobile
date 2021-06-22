@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tourist/services/api.dart';
 import 'package:tourist/theme.dart';
 
 class MyCarousel extends StatefulWidget {
   final List<String> items;
+  final bool web;
 
-  MyCarousel({this.items});
+  MyCarousel({this.items, this.web = false});
 
   @override
   _MyCarouselState createState() => _MyCarouselState();
@@ -49,10 +51,16 @@ class _MyCarouselState extends State<MyCarousel> {
   List<Widget> _getChildren() {
     List<Widget> images = <Widget>[];
     for (String item in widget.items) {
-      images.add(Image.asset(
-        item,
-        fit: BoxFit.fitWidth,
-      ));
+      String img = Api.getUrlStatic('/$item');
+      images.add(this.widget.web
+          ? Image.network(
+              img,
+              fit: BoxFit.fitWidth,
+            )
+          : Image.asset(
+              item,
+              fit: BoxFit.fitWidth,
+            ));
     }
     return images;
   }

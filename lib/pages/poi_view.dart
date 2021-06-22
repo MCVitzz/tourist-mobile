@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tourist/data/poi.dart';
+import 'package:tourist/data/point_of_interest.dart';
 import 'package:tourist/layout/button.dart';
 import 'package:tourist/layout/caousel_me.dart';
 import 'package:tourist/theme.dart';
+
+import '../utils.dart';
 
 class POIView extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class POIView extends StatefulWidget {
 
   POIView(this.poi);
 
-  final POI poi;
+  final PointOfInterest poi;
 }
 
 class _POIViewState extends State<POIView> {
@@ -24,7 +26,7 @@ class _POIViewState extends State<POIView> {
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       children: [
-        MyCarousel(items: widget.poi.images),
+        MyCarousel(items: widget.poi.images, web: true),
         Padding(
           padding: EdgeInsets.all(28),
           child: Column(children: [
@@ -33,7 +35,7 @@ class _POIViewState extends State<POIView> {
                 widget.poi.name,
                 style: TouristTheme.titleStyle,
               ),
-              Text('${widget.poi.scans} Scans',
+              Text('${Utils.doubleToString(widget.poi.scans)} Scans',
                   style: TouristTheme.titleStyleColored)
             ]),
             Container(height: 15),
@@ -44,7 +46,8 @@ class _POIViewState extends State<POIView> {
                   color: TouristTheme.yellow,
                 ),
                 Container(width: MediaQuery.of(context).size.width * .02),
-                Text('${widget.poi.ratings} (${widget.poi.ratingCount})',
+                Text(
+                    '${widget.poi.ratings} (${Utils.doubleToString(widget.poi.ratingCount)})',
                     style: TextStyle(color: TouristTheme.white)),
               ],
             ),
@@ -82,7 +85,7 @@ class _POIViewState extends State<POIView> {
                     GestureDetector(
                       onTap: () => _pressed(1),
                       child: Text(
-                        'Location',
+                        'Next Stops',
                         style: TextStyle(
                           color: _currentIdx == 1
                               ? TouristTheme.activeColor

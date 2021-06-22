@@ -18,12 +18,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -33,6 +32,7 @@ dependencies:
   barcode_scan_fix: ^1.0.2
   carousel_slider: ^4.0.0-nullsafety.0
   smooth_page_indicator: ^0.2.3
+  dio: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -43,7 +43,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -61,7 +60,7 @@ flutter:
     - assets/images/terreiro/terreiro1.jpg
     - assets/images/terreiro/terreiro2.jpg
     - assets/images/terreiro/terreiro3.jpg
-    
+
   fonts:
     - family: Montserrat
       fonts:
