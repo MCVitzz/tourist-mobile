@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 
 class Button extends StatelessWidget {
-  Button({this.onPressed, this.text = '', this.color, this.splash = true});
+  Button(
+      {this.onPressed,
+      this.text = '',
+      this.color,
+      this.splash = true,
+      this.background = Colors.transparent});
 
   final Function onPressed;
 
@@ -13,6 +18,8 @@ class Button extends StatelessWidget {
 
   final Color color;
 
+  final Color background;
+
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
@@ -21,7 +28,7 @@ class Button extends StatelessWidget {
               color: this.color == null ? TouristTheme.white : color)),
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+        backgroundColor: MaterialStateProperty.all<Color>(background),
         overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
       ),
       // style: TextButton.styleFrom(

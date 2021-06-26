@@ -1,4 +1,5 @@
 import 'package:tourist/data/point_of_interest.dart';
+import 'package:tourist/data/user.dart';
 import 'package:tourist/services/providers/data_provider.dart';
 
 import '../api.dart';
@@ -15,13 +16,24 @@ class WebProvider extends DataProvider {
   }
 
   Future<PointOfInterest> getPOI(poi) async {
-    var data = await Api.get('/pois/$poi');
-    print(data);
-    if (data['success'] == true) {
-      var poiData = Map<String, dynamic>.from(data['data']);
-      return PointOfInterest.fromJson(poiData);
-    } else {
-      return null;
-    }
+    var data = await Api.get('/poi/$poi');
+    var poiData = Map<String, dynamic>.from(data);
+    return PointOfInterest.fromJson(poiData);
+  }
+
+  Future<User> login(username) async {
+    var data = await Api.get('/user/login/$username');
+    var poiData = Map<String, dynamic>.from(data);
+    return User.fromJson(poiData);
+  }
+
+  Future<User> register(user) async {
+    var data = await Api.post('/user/register', user);
+    if (data['error'] != null) return null;
+    return User.fromJson(data);
+  }
+
+  void userScanned(User user) async {
+    await Api.put('/user/incrementScans/${user.name}', null);
   }
 }

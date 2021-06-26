@@ -1,7 +1,5 @@
-import 'package:barcode_scan_fix/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:tourist/layout/fab_icon.dart';
-import 'package:tourist/services/providers/provider.dart';
 import 'package:tourist/theme.dart';
 
 class NavBar extends StatefulWidget {

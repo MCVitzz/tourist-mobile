@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tourist/theme.dart';
 
 class FABIcon extends StatefulWidget {
-  Function onPressed;
-  IconData icon;
+  final Function onPressed;
+  final IconData icon;
 
   FABIcon({this.onPressed, this.icon});
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tourist/data/point_of_interest.dart';
-import 'package:tourist/layout/button.dart';
 import 'package:tourist/layout/caousel_me.dart';
 import 'package:tourist/theme.dart';
 
