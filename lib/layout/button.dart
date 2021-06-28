@@ -7,6 +7,8 @@ class Button extends StatelessWidget {
       {this.onPressed,
       this.text = '',
       this.color,
+      this.icon,
+      this.size,
       this.splash = true,
       this.background = Colors.transparent});
 
@@ -14,18 +16,29 @@ class Button extends StatelessWidget {
 
   final bool splash;
 
+  final double size;
+
   final String text;
 
   final Color color;
 
   final Color background;
 
+  final IconData icon;
+
   Widget build(BuildContext context) {
+    Widget child = Text(text,
+        style: TextStyle(
+            color: this.color == null ? TouristTheme.white : color,
+            fontSize: size));
+
+    if (text == '') {
+      child = Icon(icon, color: color, size: size);
+    }
+
     return TextButton(
       onPressed: onPressed,
-      child: Text(text,
-          style: TextStyle(
-              color: this.color == null ? TouristTheme.white : color)),
+      child: child,
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
         backgroundColor: MaterialStateProperty.all<Color>(background),

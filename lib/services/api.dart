@@ -5,7 +5,7 @@ class Api {
   static final String _prefixes = '/api';
   static final int _port = 3000;
 
-  static Future<Map<String, dynamic>> get(url) async {
+  static Future<dynamic> get(url) async {
     String uri = 'http://$_baseUrl:$_port$_prefixes$url';
     var res = await Dio().get(uri);
     return res.data;

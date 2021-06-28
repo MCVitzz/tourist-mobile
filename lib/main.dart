@@ -35,7 +35,8 @@ class _TouristState extends State<Tourist> {
       },
       home: FutureBuilder(
         future: Session.isLoggedIn(),
-        builder: (context, snapshot) => snapshot.data ? Home() : Login(),
+        builder: (context, snapshot) =>
+            snapshot.data != null && snapshot.data ? Home() : Login(),
       ),
     );
   }

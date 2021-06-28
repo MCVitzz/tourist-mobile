@@ -6,6 +6,7 @@ class TouristTheme {
   static final Color _51grey = Color.fromARGB(255, 51, 51, 51);
   static final Color yellow = Color.fromARGB(255, 241, 180, 52);
   static final Color white = Colors.white;
+  static final Color red = Colors.red;
 
   static final Color backgroundColor = _51grey;
   static final Color fabBackgroundColor = yellow;

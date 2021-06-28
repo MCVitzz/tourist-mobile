@@ -1,3 +1,4 @@
+import 'package:tourist/data/comment.dart';
 import 'package:tourist/data/point_of_interest.dart';
 import 'package:tourist/data/user.dart';
 import 'package:tourist/services/providers/web_provider.dart';
@@ -25,5 +26,29 @@ class Provider {
 
   static void userScanned(User user) async {
     _provider.userScanned(user);
+  }
+
+  static Future<List<Comment>> getComments(poi) async {
+    return await _provider.getComments(poi);
+  }
+
+  static Future<Comment> addComment(comment) async {
+    return await _provider.addComment(comment);
+  }
+
+  static Future<bool> hasLike(comment) async {
+    return await _provider.hasLike(comment);
+  }
+
+  static Future<User> getUser(id) async {
+    return await _provider.getUser(id);
+  }
+
+  static void like(int commentId) async {
+    _provider.like(commentId);
+  }
+
+  static void dislike(int commentId) async {
+    _provider.dislike(commentId);
   }
 }

@@ -16,7 +16,12 @@ class Session {
   Session.internal();
 
   static Future<bool> isLoggedIn() async {
-    return await FlutterKeychain.get(key: 'username') != null;
+    String user = await FlutterKeychain.get(key: 'username');
+    if (user != null) {
+      currentUser = await Provider.login(user);
+      return true;
+    }
+    return false;
   }
 
   static void login(User user) async {
