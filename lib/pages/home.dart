@@ -5,6 +5,7 @@ import 'package:tourist/layout/nav_bar.dart';
 import 'package:tourist/pages/poi_view.dart';
 import 'package:tourist/pages/profile_view.dart';
 import 'package:tourist/services/providers/provider.dart';
+import 'package:tourist/session.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   PointOfInterest _poi = PointOfInterest.sjorge;
-  Widget activeScreen = POIView(PointOfInterest.carnaxide);
+  Widget activeScreen = POIView(PointOfInterest.sjorge);
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,10 @@ class _HomeState extends State<Home> {
   void fabPressed() async {
     String scanned = await BarcodeScanner.scan();
     PointOfInterest poi = await Provider.getPOI(scanned);
+    Provider.userScanned(Session.currentUser);
     setState(() {
       _poi = poi;
+      this.activeScreen = POIView(_poi);
     });
   }
 

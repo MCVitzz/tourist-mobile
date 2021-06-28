@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 
 class Api {
@@ -7,19 +5,22 @@ class Api {
   static final String _prefixes = '/api';
   static final int _port = 3000;
 
-  static Future<Map<String, dynamic>> get(url) async {
-    var res = await Dio().get('http://$_baseUrl:$_port$_prefixes$url');
-    print(res);
-
+  static Future<dynamic> get(url) async {
+    String uri = 'http://$_baseUrl:$_port$_prefixes$url';
+    var res = await Dio().get(uri);
     return res.data;
-    // HttpClient client = HttpClient();
-    // var req = await client.get(_baseUrl, _port, _prefixes + url);
-    // HttpClientResponse res = await req.close();
-    // Map<String, dynamic> r;
-    // res.transform(utf8.decoder).listen((data) {
-    //   r = json.decode(data);
-    // });
-    // return r;
+  }
+
+  static Future<Map<String, dynamic>> post(url, body) async {
+    String uri = 'http://$_baseUrl:$_port$_prefixes$url';
+    var res = await Dio().post(uri, data: body);
+    return res.data;
+  }
+
+  static Future<Map<String, dynamic>> put(url, body) async {
+    String uri = 'http://$_baseUrl:$_port$_prefixes$url';
+    var res = await Dio().put(uri, data: body);
+    return res.data;
   }
 
   static String getUrlStatic(url) {

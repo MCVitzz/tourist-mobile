@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tourist/data/point_of_interest.dart';
-import 'package:tourist/layout/button.dart';
 import 'package:tourist/layout/caousel_me.dart';
+import 'package:tourist/pages/comment_page.dart';
 import 'package:tourist/theme.dart';
 
 import '../utils.dart';
@@ -23,7 +22,6 @@ class _POIViewState extends State<POIView> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       children: [
         MyCarousel(items: widget.poi.images, web: true),
@@ -147,7 +145,9 @@ class _POIViewState extends State<POIView> {
                         child: Text('Location'),
                       ),
                       Center(
-                        child: Text('Comments'),
+                        child: CommentsPage(
+                          poi: widget.poi,
+                        ),
                       )
                     ]))
           ]),
